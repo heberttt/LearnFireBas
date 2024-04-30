@@ -9,6 +9,25 @@ void main() {
   ));
 }
 
+class Page2 extends StatelessWidget {
+  const Page2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Page2",
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 218, 205, 209),
+      ),
+    );
+  }
+}
+
 class Page1 extends StatelessWidget {
   const Page1({super.key});
 
@@ -23,7 +42,7 @@ class Page1 extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.pink[100],
+        backgroundColor: const Color.fromARGB(255, 218, 205, 209),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -38,7 +57,7 @@ class Page1 extends StatelessWidget {
                   height: 140,
                 ),
 
-                Text("Barcode");                
+                Text("Barcode"),                
               
               ],
             ),
@@ -77,7 +96,20 @@ class Home extends StatelessWidget {
               ));
             },
             child: const Text(
-              "Home",
+              "Page1",
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const Page2(),
+              ));
+            },
+            child: const Text(
+              "Page 2",
               style: TextStyle(
                 color: Colors.black,
               ),
