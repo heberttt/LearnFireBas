@@ -22,8 +22,54 @@ class Page2 extends StatelessWidget {
             color: Colors.white
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 218, 205, 209),
+        backgroundColor: Color.fromARGB(255, 253, 172, 196),
       ),
+      body: ListView(
+        children: [
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hdassdadasdasdasdo"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+          Text("Hello"),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: "Explore"
+          ),
+        ],
+      ),
+
     );
   }
 }
@@ -102,6 +148,10 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          )
+          ,
           ElevatedButton(
             onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(
