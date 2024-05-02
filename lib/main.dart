@@ -1,12 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async{
   runApp(MaterialApp(
     routes: {
       '/': (context) => Home(),
       '/page1': (context) => Page1(),
     },
   ));
+
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
+
+  var db = FirebaseFirestore.instance;
+
+
+//   final city = <String, String>{
+//   "name": "Los Angeles",
+//   "state": "CA",
+//   "country": "USA"
+// };
+
+// db
+//     .collection("cities")
+//     .doc("LA")
+//     .set(city)
+//     .onError((e, _) => print("Error writing document: $e"));
 }
 
 class Page3 extends StatefulWidget {
@@ -190,54 +212,56 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.pink[100],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const Page1(),
-              ));
-            },
-            child: const Text(
-              "Page1",
-              style: TextStyle(
-                color: Colors.black,
+      body: ListView(
+        children: [Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const Page1(),
+                ));
+              },
+              child: const Text(
+                "Page1",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const Page2(),
-              ));
-            },
-            child: const Text(
-              "Page 2",
-              style: TextStyle(
-                color: Colors.black,
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Page2(),
+                ));
+              },
+              child: const Text(
+                "Page 2",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const Page3(),
-              ));
-            },
-            child: const Text(
-              "Page 3",
-              style: TextStyle(
-                color: Colors.black,
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Page3(),
+                ));
+              },
+              child: const Text(
+                "Page 3",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        )],
       ),
     );
   }
