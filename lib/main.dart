@@ -9,6 +9,58 @@ void main() {
   ));
 }
 
+class Page3 extends StatefulWidget {
+  const Page3({super.key});
+
+  @override
+  State<Page3> createState() => _Page3State();
+}
+
+class _Page3State extends State<Page3> {
+
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = [
+    Text("home"),
+    Text("explore")
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Page3",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color.fromARGB(255, 253, 172, 196),
+        ),
+        body: _widgetOptions[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.amber[200],
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home,),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore,),
+              label: "Explore",
+            )
+          ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        ),
+      );
+  }
+  
+  void _onItemTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+}
+
 class Page2 extends StatelessWidget {
   const Page2({super.key});
 
@@ -18,14 +70,12 @@ class Page2 extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Page2",
-          style: TextStyle(
-            color: Colors.white
-          ),
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color.fromARGB(255, 253, 172, 196),
       ),
       body: ListView(
-        children: [
+        children: const [
           Text("Hello"),
           Text("Hello"),
           Text("Hello"),
@@ -57,19 +107,30 @@ class Page2 extends StatelessWidget {
           Text("Hello"),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: "Explore"
-          ),
-        ],
-      ),
+      bottomNavigationBar: BottomNavigationBar1(),
+    );
+  }
+}
 
+class BottomNavigationBar1 extends StatefulWidget {
+  const BottomNavigationBar1({super.key});
+
+  @override
+  State<BottomNavigationBar1> createState() => _BottomNavigationBar1State();
+}
+
+class _BottomNavigationBar1State extends State<BottomNavigationBar1> {
+  int _currentIndex = 0;
+    
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Homee"),
+        BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
+      ],
+      selectedItemColor: Colors.amber[200],
+      currentIndex: _currentIndex,
     );
   }
 }
@@ -99,12 +160,11 @@ class Page1 extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("images/image1.png",
+                Image.asset(
+                  "images/image1.png",
                   height: 140,
                 ),
-
-                Text("Barcode"),                
-              
+                Text("Barcode"),
               ],
             ),
           )
@@ -135,7 +195,6 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ElevatedButton(
-            
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => const Page1(),
@@ -150,10 +209,9 @@ class Home extends StatelessWidget {
           ),
           const SizedBox(
             height: 20,
-          )
-          ,
+          ),
           ElevatedButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const Page2(),
               ));
@@ -164,7 +222,21 @@ class Home extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-          )
+          ),
+          SizedBox(height: 20,),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const Page3(),
+              ));
+            },
+            child: const Text(
+              "Page 3",
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
     );
